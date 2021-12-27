@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
       body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: const <Widget>[
-            HomeHeader(),
+            HomeHeader(name: 'Frameworkers'),
             ElevatedButton(
               onPressed: null,
               child: Text('Home content'),
