@@ -1,3 +1,4 @@
+import 'package:fidelidade_android/pages/Home/components/HomeHeader.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -5,18 +6,17 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Size _size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Home Content"),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            // Navigator.pop(context);
-          },
-          child: const Text('Home content'),
-        ),
-      ),
+      body: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: const <Widget>[
+            HomeHeader(),
+            ElevatedButton(
+              onPressed: null,
+              child: Text('Home content'),
+            ),
+          ]),
     );
   }
 }
