@@ -13,7 +13,6 @@ class HomeHeader extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-        toolbarHeight: 84,
         automaticallyImplyLeading: false,
         backgroundColor: primaryColor,
         flexibleSpace: Padding(
