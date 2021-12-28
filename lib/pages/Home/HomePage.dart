@@ -6,17 +6,11 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size _size = MediaQuery.of(context).size;
     return Scaffold(
+      appBar: const HomeHeader(name: 'Nome da pessoa', hasNotification: true),
       body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: const <Widget>[
-            HomeHeader(name: 'Frameworkers'),
-            ElevatedButton(
-              onPressed: null,
-              child: Text('Home content'),
-            ),
-          ]),
+          children: const <Widget>[]),
     );
   }
 }
