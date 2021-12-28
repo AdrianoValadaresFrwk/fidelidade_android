@@ -1,5 +1,6 @@
 import 'package:fidelidade_android/pages/Home/components/HomeHeader.dart';
 import 'package:flutter/material.dart';
+import 'components/AppChart.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -9,8 +10,10 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: const HomeHeader(name: 'Nome da pessoa', hasNotification: true),
       body: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: const <Widget>[]),
+        children: const [
+          AppChart(),
+        ],
+      ),
     );
   }
 }
