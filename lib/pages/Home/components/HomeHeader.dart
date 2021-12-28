@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../constants.dart';
+
 class HomeHeader extends StatelessWidget with PreferredSizeWidget {
   final String name;
   final bool hasNotification;
@@ -14,7 +16,7 @@ class HomeHeader extends StatelessWidget with PreferredSizeWidget {
     return AppBar(
         toolbarHeight: 84,
         automaticallyImplyLeading: false,
-        backgroundColor: const Color(0xFF0D47A1),
+        backgroundColor: primaryColor,
         flexibleSpace: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Row(
@@ -57,8 +59,7 @@ class HomeHeader extends StatelessWidget with PreferredSizeWidget {
                           width: 12,
                           height: 12,
                           decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: const Color(0xFF0D47A1), width: 2),
+                              border: Border.all(color: primaryColor, width: 2),
                               shape: BoxShape.circle,
                               color: Colors.green),
                         ),
