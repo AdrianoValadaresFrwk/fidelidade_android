@@ -4,6 +4,8 @@ import 'package:fidelidade_android/pages/Notifications/NotificationsPage.dart';
 import 'package:fidelidade_android/pages/SignUp/SignUpPage.dart';
 import 'package:fidelidade_android/pages/SignUp/SignUpSecondPage.dart';
 import 'package:fidelidade_android/pages/Welcome/WelcomeScreen.dart';
+import 'package:fidelidade_android/pages/Withdraw/WithdrawPixPage.dart';
+import 'package:fidelidade_android/pages/Withdraw/WithdrawTedPage.dart';
 import 'package:fidelidade_android/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -26,6 +28,8 @@ class App extends StatelessWidget {
         '/notifications': (context) => const NotificationsPage(),
         '/signup': (context) => const SignUpPage(),
         '/signup/2': (context) => const SignUpSecondPage(),
+        '/pix': (context) => const PixPage(),
+        '/ted': (context) => const WithDrawTedPage(),
       },
       debugShowCheckedModeBanner: false,
     );
