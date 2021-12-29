@@ -1,18 +1,18 @@
-import 'package:fidelidade_android/components/RoundedInputField.dart';
+import 'package:fidelidade_android/pages/Home/components/AppChart.dart';
+import 'package:fidelidade_android/pages/Home/components/CoinExchangeModal.dart';
 import 'package:fidelidade_android/pages/Home/components/HomeHeader.dart';
-import 'package:fidelidade_android/components/CustomAppBar.dart';
-import 'package:fidelidade_android/constants.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  final String amount = "500";
+  final String coinAmount = "1000";
   const HomePage({Key? key}) : super(key: key);
 
-  void _configurandoModalBottomSheet(context) {
+  void _openCoinExchangeModalBottomSheet(context) {
     final Size _size = MediaQuery.of(context).size;
     showModalBottomSheet(
+        isScrollControlled: true,
         constraints: BoxConstraints(
-            maxWidth: _size.width * 0.8, minHeight: _size.height),
+            maxWidth: _size.width * 0.8, minHeight: _size.height * 0.95),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(10),
@@ -21,89 +21,8 @@ class HomePage extends StatelessWidget {
         ),
         context: context,
         builder: (BuildContext bc) {
-          return Container(
-            child: Wrap(
-              // spacing: 5,
-              children: <Widget>[
-                CustomAppBar(
-                  title: 'teste',
-                  isOnmodal: true,
-                ),
-                const Center(
-                  child: Icon(
-                    Icons.error_outline,
-                    size: 48,
-                    color: primaryColor,
-                  ),
-                ),
-                const Center(
-                  child: Text(
-                    "A cada 100 Moedas, você pode trocar por R\$ 1,00.",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: primaryColor, fontSize: 24),
-                  ),
-                ),
-                Card(
-                  color: primaryColor,
-                  margin: const EdgeInsets.all(16),
-                  child: Column(
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.all(10.0),
-                        child: Center(
-                            child: Text(
-                          'Você Possui:',
-                          style: TextStyle(color: Colors.white, fontSize: 24),
-                        )),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.symmetric(vertical: 16),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Image.asset('assets/images/coin.png'),
-                            ),
-                            Stack(
-                              children: <Widget>[
-                                Text(
-                                  amount,
-                                  style: TextStyle(
-                                    fontSize: 40,
-                                    foreground: Paint()
-                                      ..style = PaintingStyle.stroke
-                                      ..strokeWidth = 6
-                                      ..color = moneyColor,
-                                  ),
-                                ),
-                                Text(
-                                  amount,
-                                  style: const TextStyle(
-                                    fontSize: 40,
-                                    color: primaryColor,
-                                  ),
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                RoundedInputField(
-                  hintText: "Moedas",
-                  onChanged: (value) {},
-                ),
-                const Card(
-                  color: background,
-                  child: Center(
-                    child: Text('R\$ 00,00'),
-                  ),
-                )
-              ],
-            ),
+          return CoinExchangeModal(
+            coinAmount: coinAmount,
           );
         });
   }
@@ -119,11 +38,11 @@ class HomePage extends StatelessWidget {
             child: ElevatedButton(
               child: const Text('open'),
               onPressed: () {
-                _configurandoModalBottomSheet(context);
+                _openCoinExchangeModalBottomSheet(context);
               },
             ),
           ),
-          // const AppChart(),
+          const AppChart(),
         ],
       ),
     );
