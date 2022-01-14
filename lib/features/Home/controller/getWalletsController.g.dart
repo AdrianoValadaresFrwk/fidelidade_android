@@ -28,8 +28,22 @@ mixin _$GetWalletsController on _GetWalletsController, Store {
       AsyncAction('_GetWalletsController.getWallets');
 
   @override
-  Future<bool> getWallets() {
+  Future<WalletsModel> getWallets() {
     return _$getWalletsAsyncAction.run(() => super.getWallets());
+  }
+
+  final _$_GetWalletsControllerActionController =
+      ActionController(name: '_GetWalletsController');
+
+  @override
+  void setWallets(WalletsModel wallets) {
+    final _$actionInfo = _$_GetWalletsControllerActionController.startAction(
+        name: '_GetWalletsController.setWallets');
+    try {
+      return super.setWallets(wallets);
+    } finally {
+      _$_GetWalletsControllerActionController.endAction(_$actionInfo);
+    }
   }
 
   @override

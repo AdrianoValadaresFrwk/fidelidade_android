@@ -66,9 +66,10 @@ class _HomePageState extends State<HomePage> {
   void loadWallets() {
     getWalletsController.getWallets().then((value) => {
           setState(() {
-            if (value) {
-              walletsModel = getWalletsController.walletsModel!;
-            }
+            print("kapa?");
+            print(value);
+            // walletsModel = getWalletsController.walletsModel!;
+            walletsModel = value;
           })
         });
   }

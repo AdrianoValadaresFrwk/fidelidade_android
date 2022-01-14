@@ -13,12 +13,16 @@ abstract class _GetWalletsController with Store {
   WalletsModel? walletsModel;
 
   @action
-  Future<bool> getWallets() async {
+  Future<WalletsModel> getWallets() async {
     try {
-      walletsModel = await getWalletApi.getWallets();
-      return true;
+      return walletsModel = await getWalletApi.getWallets();
     } catch (e) {
-      return false;
+      throw Exception(e);
     }
+  }
+
+  @action
+  void setWallets(WalletsModel wallets) {
+    walletsModel = wallets;
   }
 }
