@@ -108,7 +108,6 @@ class _MoneyExchangeModalState extends State<MoneyExchangeModal> {
                         } else {
                           inputedValue = double.parse(value);
                         }
-                        // moneyAmount = 'R\$ $valueConverted';
                       });
                     },
                   ),

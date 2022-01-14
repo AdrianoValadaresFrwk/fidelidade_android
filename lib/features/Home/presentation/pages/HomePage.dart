@@ -5,7 +5,6 @@ import 'package:fidelidade_android/features/Home/presentation/widgets/CoinExchan
 import 'package:fidelidade_android/features/Home/presentation/widgets/HomeHeader.dart';
 import 'package:fidelidade_android/features/Home/presentation/widgets/InformationCard.dart';
 import 'package:fidelidade_android/features/Home/presentation/widgets/MoneyExchangeModal.dart';
-import 'package:fidelidade_android/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:fidelidade_android/features/Home/controller/WalletsController.dart';
@@ -116,23 +115,6 @@ class _HomePageState extends State<HomePage> {
               ),
               InformationCard(
                 size: _size,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: ElevatedButton(
-                    style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all(primaryColor)),
-                    onPressed: () async {
-                      setState(() {
-                        loadWallets();
-                      });
-                    },
-                    child: const Icon(
-                      Icons.get_app,
-                      color: moneyColor,
-                      size: 48,
-                    )),
               ),
               const AppChart(),
             ],
