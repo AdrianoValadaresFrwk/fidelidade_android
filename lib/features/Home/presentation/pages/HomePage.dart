@@ -1,4 +1,3 @@
-import 'package:fidelidade_android/features/Home/models/Wallets.dart';
 import 'package:fidelidade_android/features/Home/presentation/widgets/AppChart.dart';
 import 'package:fidelidade_android/features/Home/presentation/widgets/BalanceCoinsCard.dart';
 import 'package:fidelidade_android/features/Home/presentation/widgets/BalanceMoneyCard.dart';
@@ -9,7 +8,7 @@ import 'package:fidelidade_android/features/Home/presentation/widgets/MoneyExcha
 import 'package:fidelidade_android/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:fidelidade_android/features/Home/controller/getWalletsController.dart';
+import 'package:fidelidade_android/features/Home/controller/WalletsController.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -19,8 +18,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  GetWalletsController getWalletsController = GetWalletsController();
-  late WalletsModel walletsModel;
+  WalletsController walletsController = WalletsController();
 
   void _openCoinExchangeModalBottomSheet(context) {
     final Size _size = MediaQuery.of(context).size;
@@ -37,8 +35,9 @@ class _HomePageState extends State<HomePage> {
         context: context,
         builder: (BuildContext bc) {
           return CoinExchangeModal(
-              wallet: walletsModel.wallet![0],
-              walletTargetId: walletsModel.wallet![1].id!.toDouble(),
+              wallet: walletsController.walletsModel!.wallet![0],
+              walletTargetId:
+                  walletsController.walletsModel!.wallet![1].id!.toDouble(),
               onModalDismiss: loadWallets);
         });
   }
@@ -58,26 +57,20 @@ class _HomePageState extends State<HomePage> {
         context: context,
         builder: (BuildContext bc) {
           return MoneyExchangeModal(
-              moneyAmount: walletsModel.wallet![1].amount!.toDouble(),
+              moneyAmount:
+                  walletsController.walletsModel!.wallet![1].amount!.toDouble(),
               onModalDismiss: loadWallets);
         });
   }
 
   void loadWallets() {
-    getWalletsController.getWallets().then((value) => {
-          setState(() {
-            print("kapa?");
-            print(value);
-            // walletsModel = getWalletsController.walletsModel!;
-            walletsModel = value;
-          })
-        });
+    walletsController.getWallets();
   }
 
   @override
   void initState() {
-    super.initState();
     loadWallets();
+    super.initState();
   }
 
   @override
@@ -106,12 +99,18 @@ class _HomePageState extends State<HomePage> {
               // ),
               BalanceCoinsCard(
                 size: _size,
-                coinAmount: walletsModel.wallet![0].amount!.toDouble(),
+                coinAmount: walletsController.walletsModel == null
+                    ? -1
+                    : walletsController.walletsModel!.wallet![0].amount!
+                        .toDouble(),
                 openModal: _openCoinExchangeModalBottomSheet,
               ),
               BalanceMoneyCard(
                 size: _size,
-                moneyAmout: walletsModel.wallet![1].amount!.toDouble(),
+                moneyAmout: walletsController.walletsModel == null
+                    ? -1
+                    : walletsController.walletsModel!.wallet![1].amount!
+                        .toDouble(),
                 openModal: _openMoneyExchangeModalBottomSheet,
               ),
               InformationCard(

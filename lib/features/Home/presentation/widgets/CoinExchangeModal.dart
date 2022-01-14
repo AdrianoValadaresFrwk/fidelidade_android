@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:fidelidade_android/appEnv.dart';
+import 'package:fidelidade_android/features/Home/controller/WalletsController.dart';
 import 'package:fidelidade_android/features/Home/models/Wallets.dart';
 import 'package:fidelidade_android/shared/presentation/widgets/CustomAppBar.dart';
 import 'package:fidelidade_android/shared/presentation/widgets/Input.dart';
@@ -27,22 +28,13 @@ class CoinExchangeModal extends StatefulWidget {
 }
 
 class _CoinExchangeModalState extends State<CoinExchangeModal> {
+  WalletsController walletsController = WalletsController();
   late double coinAmount;
   late double walletId;
   late double _walletTargetId;
   double inputedValue = 0.0;
   String moneyAmount = "R\$ 00,00";
   void Function()? onModalDismiss;
-
-  Future<http.Response> transferCoinsToMoney(Map<String, dynamic> requestBody) {
-    return http.post(
-      Uri.parse('$apiBaseUrl/Wallet/Transfer'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: jsonEncode(requestBody),
-    );
-  }
 
   @override
   void initState() {
@@ -197,9 +189,12 @@ class _CoinExchangeModalState extends State<CoinExchangeModal> {
                                     "quantity": inputedValue
                                   };
                                   try {
-                                    await transferCoinsToMoney(body);
-                                    Navigator.pop(context);
-                                    onModalDismiss!();
+                                    walletsController
+                                        .transferCoinsToMoney(body)
+                                        .then((value) => {
+                                              Navigator.pop(context),
+                                              onModalDismiss!()
+                                            });
                                   } catch (e) {
                                     throw Exception(e);
                                   }

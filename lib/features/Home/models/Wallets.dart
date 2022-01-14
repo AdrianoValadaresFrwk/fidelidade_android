@@ -4,9 +4,9 @@ class WalletsModel {
   WalletsModel({this.wallet});
 
   WalletsModel.fromJson(Map<String, dynamic> json) {
-    if (json['Wallet'] != null) {
+    if (json['ObjectList'] != null) {
       wallet = <Wallet>[];
-      json['Wallet'].forEach((v) {
+      json['ObjectList'].forEach((v) {
         wallet!.add(Wallet.fromJson(v));
       });
     }
@@ -15,7 +15,7 @@ class WalletsModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     if (wallet != null) {
-      data['Wallet'] = wallet!.map((v) => v.toJson()).toList();
+      data['ObjectList'] = wallet!.map((v) => v.toJson()).toList();
     }
     return data;
   }
