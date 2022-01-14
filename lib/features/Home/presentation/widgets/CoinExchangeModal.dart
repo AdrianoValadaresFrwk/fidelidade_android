@@ -1,5 +1,3 @@
-import 'dart:convert';
-import 'package:fidelidade_android/appEnv.dart';
 import 'package:fidelidade_android/features/Home/controller/WalletsController.dart';
 import 'package:fidelidade_android/features/Home/models/Wallets.dart';
 import 'package:fidelidade_android/shared/presentation/widgets/CustomAppBar.dart';
@@ -8,7 +6,6 @@ import 'package:fidelidade_android/utils/Images.dart';
 import 'package:fidelidade_android/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:http/http.dart' as http;
 
 class CoinExchangeModal extends StatefulWidget {
   final Wallet wallet;
