@@ -57,8 +57,9 @@ class _HomePageState extends State<HomePage> {
         context: context,
         builder: (BuildContext bc) {
           return MoneyExchangeModal(
-              moneyAmount:
-                  walletsController.walletsModel!.wallet![1].amount!.toDouble(),
+              wallet: walletsController.walletsModel!.wallet![1],
+              walletTargetId:
+                  walletsController.walletsModel!.wallet![0].id!.toDouble(),
               onModalDismiss: loadWallets);
         });
   }
