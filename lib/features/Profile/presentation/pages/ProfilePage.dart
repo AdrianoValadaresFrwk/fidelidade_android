@@ -1,5 +1,6 @@
 import 'package:fidelidade_android/features/Profile/presentation/widgets/ProfileBody.dart';
 import 'package:fidelidade_android/shared/presentation/widgets/ProfileEdit.dart';
+import 'package:fidelidade_android/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -48,7 +49,9 @@ class ProfileScreen extends StatelessWidget {
               )),
         ],
       ),
-      body: ProfileBody(),
+      body: SingleChildScrollView(       
+        child: ProfileBody(),
+      ),
     );
   }
 }
