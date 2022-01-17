@@ -1,6 +1,6 @@
 const _baseUrl = "baseUrl";
 
-enum AppEnvironment { dev, stage, prod }
+enum AppEnvironment { dev, stage, prod, android }
 
 Map<String, dynamic> _config = {};
 
@@ -14,6 +14,9 @@ void setEnvironment(AppEnvironment env) {
       break;
     case AppEnvironment.prod:
       _config = prodConstants;
+      break;
+    case AppEnvironment.android:
+      _config = androidConstants;
       break;
   }
 }
@@ -32,4 +35,8 @@ Map<String, dynamic> stageConstants = {
 
 Map<String, dynamic> prodConstants = {
   _baseUrl: "http://localhost:8001",
+};
+
+Map<String, dynamic> androidConstants = {
+  _baseUrl: "http://10.0.2.2:8001",
 };

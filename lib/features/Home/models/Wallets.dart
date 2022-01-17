@@ -27,7 +27,7 @@ class Wallet {
   int? userId;
   String? cpf;
   int? walletTypeId;
-  double? amount;
+  dynamic amount;
 
   Wallet(
       {this.id,
