@@ -10,6 +10,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:fidelidade_android/utils/Alerts.dart';
 import 'dart:io';
 
+import 'AddBankChips.dart';
+
 enum ImageSourceType { gallery, camera }
 
 class ProfileBody extends StatefulWidget {
@@ -98,7 +100,7 @@ class _ProfileBodyState extends State<ProfileBody> {
         return ProfileBackground(
           imageFile: profilePictureController.imageFile,
           child: Padding(
-            padding: const EdgeInsets.only(top: 120, left: 20, right: 20),
+            padding: const EdgeInsets.only(top: 70, left: 46, right: 46),
             child: Column(
               children: <Widget>[
                 Align(
@@ -107,6 +109,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                     height: 115,
                     width: 115,
                     child: Stack(
+                      alignment: Alignment.topLeft,
                       clipBehavior: Clip.none,
                       fit: StackFit.expand,
                       children: [
@@ -142,7 +145,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 5.0),
+                const SizedBox(height: 10.0),
                 const Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
@@ -166,7 +169,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 15.0),
+                const SizedBox(height: 38.0),
                 const Align(
                   alignment: Alignment.centerLeft,
                   child: Text.rich(TextSpan(children: <InlineSpan>[
@@ -182,7 +185,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                         style: TextStyle(color: Colors.white, fontSize: 18.0))
                   ])),
                 ),
-                const SizedBox(height: 5.0),
+                const SizedBox(height: 12.0),
                 const Align(
                   alignment: Alignment.centerLeft,
                   child: Text.rich(TextSpan(children: <InlineSpan>[
@@ -197,7 +200,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                         style: TextStyle(color: Colors.white, fontSize: 18.0))
                   ])),
                 ),
-                const SizedBox(height: 5.0),
+                const SizedBox(height: 12.0),
                 const Align(
                   alignment: Alignment.centerLeft,
                   child: Text.rich(TextSpan(children: <InlineSpan>[
@@ -217,93 +220,115 @@ class _ProfileBodyState extends State<ProfileBody> {
           ),
         );
       }),
-      GestureDetector(
-        onTap: () {
-          _openChangePasswordModal(context);
-        },
-        child: const Padding(
-          padding: EdgeInsets.all(20),
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Text.rich(
-              TextSpan(children: <InlineSpan>[
-                WidgetSpan(
-                  child: Padding(
-                      padding: EdgeInsets.only(right: 10.0),
-                      child:
-                          Icon(Icons.password, color: kPrimaryColor, size: 18)),
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 26.0),
+        child: Column(
+          children: [
+            GestureDetector(
+              onTap: () {
+                _openChangePasswordModal(context);
+              },
+              child: const Padding(
+                padding: EdgeInsets.all(20),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text.rich(
+                    TextSpan(children: <InlineSpan>[
+                      WidgetSpan(
+                        child: Padding(
+                            padding: EdgeInsets.only(right: 10.0),
+                            child: Icon(Icons.password,
+                                color: kPrimaryColor, size: 18)),
+                      ),
+                      TextSpan(
+                          text: "Alterar Senha",
+                          style:
+                              TextStyle(color: kPrimaryColor, fontSize: 18.0))
+                    ]),
+                  ),
                 ),
-                TextSpan(
-                    text: "Alterar Senha",
-                    style: TextStyle(color: kPrimaryColor, fontSize: 18.0))
-              ]),
-            ),
-          ),
-        ),
-      ),
-      const Padding(
-        padding: EdgeInsets.all(20),
-        child: Align(
-          alignment: Alignment.centerLeft,
-          child: Text.rich(TextSpan(children: <InlineSpan>[
-            WidgetSpan(
-              child: Padding(
-                  padding: EdgeInsets.only(right: 10.0),
-                  child: Icon(Icons.account_balance,
-                      color: kPrimaryColor, size: 18)),
-            ),
-            TextSpan(
-                text: "Lista de Bancos",
-                style: TextStyle(color: kPrimaryColor, fontSize: 18.0))
-          ])),
-        ),
-      ),
-      const BankChips(),
-      GestureDetector(
-        onTap: () {
-          showAlertDialog(context, "Confirmação",
-              "Gostaria de confirmar a Finalização da sessão?");
-        },
-        child: const Padding(
-          padding: EdgeInsets.all(20),
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Text.rich(TextSpan(children: <InlineSpan>[
-              WidgetSpan(
-                child: Padding(
-                    padding: EdgeInsets.only(right: 10.0),
-                    child: Icon(Icons.logout, color: kPrimaryColor, size: 18)),
               ),
-              TextSpan(
-                  text: "Finalizar Sessão",
-                  style: TextStyle(color: kPrimaryColor, fontSize: 18.0))
-            ])),
-          ),
-        ),
-      ),
-      GestureDetector(
-        onTap: () {
-          showAlertDialog(
-              context, "Confirmação", "Gostaria de confirmar apagar a conta?");
-        },
-        child: const Padding(
-          padding: EdgeInsets.all(20),
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Text.rich(TextSpan(children: <InlineSpan>[
-              WidgetSpan(
-                child: Padding(
-                    padding: EdgeInsets.only(right: 10.0),
-                    child:
-                        Icon(Icons.power_off, color: kPrimaryColor, size: 18)),
+            ),
+            const Padding(
+              padding: EdgeInsets.all(20),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text.rich(TextSpan(children: <InlineSpan>[
+                  WidgetSpan(
+                    child: Padding(
+                        padding: EdgeInsets.only(right: 10.0),
+                        child: Icon(Icons.account_balance,
+                            color: kPrimaryColor, size: 18)),
+                  ),
+                  TextSpan(
+                      text: "Lista de Bancos",
+                      style: TextStyle(color: kPrimaryColor, fontSize: 18.0))
+                ])),
               ),
-              TextSpan(
-                  text: "Apagar Conta",
-                  style: TextStyle(color: Colors.red, fontSize: 18.0))
-            ])),
-          ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20.0, top: 10, bottom: 10),
+              child: Wrap(
+                runSpacing: 10.0,
+                children: [
+                  BankChips(title: 'Banco do Brasil'),
+                  BankChips(title: 'Bradesco'),
+                  BankChips(title: 'Santander'),
+                  BankChips(title: 'Nubank'),
+                  const AddBankChips(),
+                ],
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                showAlertDialog(context, "Confirmação",
+                    "Gostaria de confirmar a Finalização da sessão?");
+              },
+              child: const Padding(
+                padding: EdgeInsets.all(20),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text.rich(TextSpan(children: <InlineSpan>[
+                    WidgetSpan(
+                      child: Padding(
+                          padding: EdgeInsets.only(right: 10.0),
+                          child: Icon(Icons.logout,
+                              color: kPrimaryColor, size: 18)),
+                    ),
+                    TextSpan(
+                        text: "Finalizar Sessão",
+                        style: TextStyle(color: kPrimaryColor, fontSize: 18.0))
+                  ])),
+                ),
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                showAlertDialog(context, "Confirmação",
+                    "Gostaria de confirmar apagar a conta?");
+              },
+              child: const Padding(
+                padding: EdgeInsets.all(20),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text.rich(TextSpan(children: <InlineSpan>[
+                    WidgetSpan(
+                      child: Padding(
+                          padding: EdgeInsets.only(right: 10.0),
+                          child: Icon(Icons.power_off,
+                              color: kPrimaryColor, size: 18)),
+                    ),
+                    TextSpan(
+                        text: "Apagar Conta",
+                        style: TextStyle(color: Colors.red, fontSize: 18.0))
+                  ])),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
+      const SizedBox(height: 50)
     ]);
   }
 }
