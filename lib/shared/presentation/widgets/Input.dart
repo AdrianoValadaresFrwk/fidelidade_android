@@ -35,7 +35,7 @@ class Input extends StatelessWidget {
     return TextFormField(
         keyboardType: keyboardType,
         onChanged: (value) {
-          onChanged!(value);
+          onChanged != null ? onChanged!(value) : "";
         },
         readOnly: readOnly ?? false,
         obscureText: obscureText ?? false,
@@ -45,9 +45,9 @@ class Input extends StatelessWidget {
         validator: validator,
         inputFormatters: inputFormatters,
         decoration: InputDecoration(
-            labelStyle: TextStyle(color: primaryColor),
-            focusedBorder: UnderlineInputBorder(
-                borderSide: const BorderSide(
+            labelStyle: const TextStyle(color: primaryColor),
+            focusedBorder: const UnderlineInputBorder(
+                borderSide: BorderSide(
                     color: primaryColor, style: BorderStyle.solid, width: 1.7)),
             hintText: hintText,
             labelText: labelText));
