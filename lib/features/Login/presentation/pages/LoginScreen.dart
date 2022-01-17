@@ -1,4 +1,6 @@
+import 'package:fidelidade_android/appEnv.dart';
 import 'package:fidelidade_android/core/DBHelper.dart';
+import 'package:fidelidade_android/core/infrastructure/http_client.dart';
 import 'package:fidelidade_android/features/Login/presentation/widgets/LoginBody.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert' as convert;
@@ -32,7 +34,12 @@ class _LoginScreenState extends State<LoginScreen>
       String url = "http://192.168.101.5:8081/login";
       Map<String, String> body = {'cpf': cpf, 'password': password};
       try {
-        var token = await Dio().post(url, data: body);
+        //var token = await Dio().post(url, data: body);
+        final token = await HttpClient.postAsync(
+          'http://192.168.101.5:8081/login',
+          headers: {},
+          requestBody: body,
+        );
         var db = await DBHelper();
         await db.saveToken(token.toString(), cpf);
         // String recordedToken = await db.getToken();
