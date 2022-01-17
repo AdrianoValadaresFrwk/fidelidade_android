@@ -36,6 +36,7 @@ dependencies:
   flutter_svg: ^1.0.0
   circular_profile_avatar: ^1.0.6
   sqflite: ^2.0.1
+  path_provider: ^2.0.1
   mask_text_input_formatter: ^2.0.0
   http: ^0.13.4
   email_validator: ^2.0.1
@@ -50,6 +51,8 @@ dependencies:
   flutter_mobx: ^2.0.3+2
   get_it: ^7.2.0
   grouped_list: ^4.1.0
+  dio: ^4.0.4
+
 
 dev_dependencies:
   flutter_test:

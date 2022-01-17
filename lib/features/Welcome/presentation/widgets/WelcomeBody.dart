@@ -19,21 +19,19 @@ class WelcomeBody extends StatelessWidget {
           children: <Widget>[
             Center(
               child: SizedBox(
-                  width: 350,
-                  height: 83,
-                  child: SvgPicture.asset(logoImg)),
+                  width: 350, height: 83, child: SvgPicture.asset(logoImg)),
             ),
             SizedBox(height: size.height * 0.10),
             RoundedButton(
               text: "Entrar",
               press: () {
-                Navigator.of(context).pushNamed('/home');
+                Navigator.of(context).pushNamed('/login');
               },
             ),
             const Padding(
               padding: EdgeInsets.only(top: 0.0),
-              child: const Center(
-                child:  CustomDivider(
+              child: Center(
+                child: CustomDivider(
                   text: 'Ou',
                 ),
               ),
